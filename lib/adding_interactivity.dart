@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class AddingInteractivity extends StatelessWidget {
-  AddingInteractivity(int index);
+class AddingInteractivity2 extends StatelessWidget {
+  AddingInteractivity2(int index);
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,11 @@ class FavoriteWidget extends StatefulWidget {
 }
 
 class _FavoriteWidgetState extends State<FavoriteWidget> {
+
+  bool _isFavorited = true;
+  int _favoriteCount = 41;
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,6 +71,22 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                       color: Colors.red[500],
                     ),
                     Text('41'),
+
+                    Container(
+                      padding: EdgeInsets.all(0),
+                      child: IconButton(
+                        icon: (_isFavorited ? Icon(Icons.star) : Icon(Icons.star_border)),
+                        color: Colors.red[500],
+                        onPressed: _addRemoveFavorite(),
+                      ),
+                    ),
+
+                    SizedBox(
+                      width: 18,
+                      child: Container(
+                        child: Text('$_favoriteCount'),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -80,7 +101,6 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
                   ],
                 ),
               ),
-
               Container(
                 child: descriptionText,
               ),
@@ -125,6 +145,11 @@ class _FavoriteWidgetState extends State<FavoriteWidget> {
         ),
       ],
     );
+  }
+
+  _addRemoveFavorite() {
+
+
   }
 
 

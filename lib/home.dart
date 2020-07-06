@@ -1,21 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/bloc/bloc_main.dart';
+import 'package:flutter_app/bloc_counter_example/counter.dart';
 import 'package:flutter_app/build_a_custom_widget.dart';
 import 'package:flutter_app/buttons.dart';
 import 'package:flutter_app/isolate.dart';
+import 'package:flutter_app/netflix/screens/home_screen.dart';
+import 'package:flutter_app/netflix/screens/movie_details_screen.dart';
+import 'package:flutter_app/provider/common/text_styles.dart';
+import 'package:flutter_app/provider/common/theme.dart';
+import 'package:flutter_app/provider_and_scoped_model/provider_main.dart';
 import 'package:flutter_app/row_and_column.dart';
 import 'package:flutter_app/run_on_ui_thread_in_flutter.dart';
 import 'package:flutter_app/stack_and_positioned.dart';
 import 'package:flutter_app/start_activity_for_result_in_flutter.dart';
+import 'package:flutter_app/state_handle_by_parent_widget.dart';
 import 'package:flutter_app/stateful_widget.dart';
 import 'package:flutter_app/text_input.dart';
 import 'package:flutter_app/text_widget.dart';
+import 'package:flutter_app/widget_manages_own_state.dart';
 
+import 'a_mix_match_approach.dart';
 import 'add_remove_component.dart';
-import 'adding_interactivity.dart';
 import 'animate_a_widget.dart';
 import 'handle_incoming_intent.dart';
+import 'interactivity.dart';
 import 'layout_in_flutter_exercise_one.dart';
 import 'layout_in_flutter_exercise_two.dart';
+import 'navigation_and_routing/animate_a_widget_accross_screen.dart';
+import 'navigation_and_routing/navigate_wi_named_routes.dart';
+import 'navigation_and_routing/pass_argument_to_named_route.dart';
+import 'navigation_and_routing/return_data_like_activity_result.dart';
+import 'navigation_and_routing/send_data_to_new_screen.dart';
+import 'provider/provider_example.dart';
+import 'provider/screens/my_login.dart';
+import 'sqlite/sqlite_example.dart';
+import 'state_management/state_managemet_ephemeral_(local_or_ui_state)_state.dart';
 
 void main() => runApp(MyHome());
 
@@ -36,7 +55,24 @@ List<String> items = [
   '14. Layout in Flutter : Exercise 1',
   '15. Layout Totorial',
   '16. Adding Interactivity',
+  '17.1 Widget manages own state',
+  '17.2 Widget state handling with Parent widget',
+  '17.3 A mix-and-match approach',
+  '18.1 Navigation & Routing (Animate a widget across screens)',
+//  '18.2 Navigate with named routes',
+  '18.3 Named Route with Arguments',
+  '18.4 Pass arguments to a named route',
+  '18.5 Return Data like onActivityResult()',
+  '18.6 Send Data To New Screen',
+  '19.1 State Management : Ephemeral (Local or Ui State) State',
+  'Provider Example',
+  'SQlite Example',
+  'Provider Architecture (Provider & Scoped Model)',
+  'Bloc pattern',
+  'Bloc : Flutter Counter Example',
+  'Netflix Demo'
 ];
+
 
 class MyHome extends StatelessWidget {
   @override
@@ -44,9 +80,7 @@ class MyHome extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Home Page",
-      theme: ThemeData(
-        primarySwatch: Colors.red
-      ),
+      theme: appTheme,
       home: MyList(
       ),
     );
@@ -60,7 +94,8 @@ class MyList extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Home Page"
+          "Home Page",
+          style: headerStyle,
         ),
       ),
       body: myListItems(context),
@@ -77,7 +112,7 @@ class MyList extends StatelessWidget {
           child:  ListTile(
             title: Text(/*'${index + 1} ' +*/ items[index]),
 //          subtitle: Text("Sub Title"),
-            leading: Icon(Icons.thumb_up),
+//            leading: Icon(Icons.thumb_up),
 //          trailing: Icon(Icons.arrow_forward),
 //          onTap: (){
 //            Navigator.push(context,
@@ -162,6 +197,51 @@ class MyList extends StatelessWidget {
       }break;
       case 15: {
         c = AddingInteractivity(index);
+      }break;
+      case 16: {
+        c = ManageWidgetOwnState(index);
+      }break;
+      case 17: {
+        c = ParentWidget(index);
+      }break;
+      case 18: {
+        c = ParentWidgetMixMatchApproach(index);
+      }break;
+      case 19: {
+        c = AnimateWidgetMainScreen(index);
+      }break;
+      case 20: {
+        c = NamedRoutes(index);
+      }break;
+      case 21: {
+        c = PassArguments();
+      }break;
+      case 22: {
+        c = ReturnDataHomeScreen();
+      }break;
+      case 23: {
+        c = SendDataToNewScreen();
+      }break;
+      case 24: {
+        c = EphemeralStateHomePage();
+      }break;
+      case 25: {
+        c = ProviderExample();
+      }break;
+      case 26: {
+        c = SQLiteExample();
+      }break;
+      case 27: {
+        c = ProviderArchitecture();
+      }break;
+      case 28: {
+        c = BlocPattern();
+      }break;
+      case 29: {
+        c = BlocCounterExample();
+      }break;
+      case 30: {
+        c = NetflixDashboard();
       }break;
     }
     Navigator.push(context,
