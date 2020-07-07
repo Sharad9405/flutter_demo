@@ -3,6 +3,9 @@ import 'package:flutter_app/netflix/widgets/circular_clipper.dart';
 import 'package:flutter_app/netflix/widgets/content_scroll.dart';
 
 class MovieDetails extends StatefulWidget {
+
+  MovieDetails();
+
   @override
   _MovieDetailsState createState() => _MovieDetailsState();
 }
@@ -140,7 +143,7 @@ class _MovieDetailsState extends State<MovieDetails> {
               ],
             ),
           ),
-          SimilarMovies(
+          HorizontalScrollView(
             images: similarMoviesList(),
             title: 'Similar Movies',
             imageHeight: 170.0,

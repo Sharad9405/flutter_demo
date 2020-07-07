@@ -73,7 +73,6 @@ List<String> items = [
   'Netflix Demo'
 ];
 
-
 class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -104,6 +103,7 @@ class MyList extends StatelessWidget {
 
 
   ListView myListItems(BuildContext context){
+//    items.reversed;
     return ListView.builder(
         itemCount: items.length,
         itemBuilder: (_, index) {

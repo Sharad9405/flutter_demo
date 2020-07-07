@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class SimilarMovies extends StatelessWidget {
+class HorizontalScrollView extends StatelessWidget {
   final List<String> images;
   final String title;
   final double imageHeight;
   final double imageWidth;
 
-  SimilarMovies({
+  HorizontalScrollView({
     this.images,
     this.title,
     this.imageHeight,
